@@ -3,12 +3,12 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-	[SerializeField] private Health _health;
+	[field:SerializeField] public Health Health { get; private set; }
 	[SerializeField] private GameObject _destroyEffectPrefab;
 
 	private void Start()
 	{
-		_health.HealthEnded += OnEndHealth;
+		Health.HealthEnded += OnEndHealth;
 	}
 
 	private void OnEndHealth(object sender, EventArgs e)
@@ -19,6 +19,6 @@ public class Enemy : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		_health.HealthEnded -= OnEndHealth;
+		Health.HealthEnded -= OnEndHealth;
 	}
 }
